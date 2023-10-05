@@ -64,7 +64,7 @@ public class MovementService {
         // Update balance
         AccountRequest acctReq = new AccountRequest();
         acctReq.setBalance(balance);
-        this.acctServ.update(acct.getAccountId(), acctReq);
+        this.acctServ.update(acct.getAccountId(), acctReq, acct);
         // Add movement
         return movRepo.save(mv).getMovementId();
     }
@@ -136,7 +136,7 @@ public class MovementService {
         }
         AccountRequest acctDto = new AccountRequest();
         acctDto.setBalance(balance);
-        this.acctServ.update(acct.getAccountId(), acctDto);
+        this.acctServ.update(acct.getAccountId(), acctDto, acct);
         // Delete row
         movRepo.deleteById(id);
     }

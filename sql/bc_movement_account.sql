@@ -57,7 +57,6 @@ CREATE TABLE `movements` (
   `balance` double NOT NULL,
   `date` datetime(6) NOT NULL,
   `initial_balance` double NOT NULL,
-  `movement_type` enum('credit','debit') NOT NULL,
   `value` double NOT NULL,
   `account_id` bigint NOT NULL,
   PRIMARY KEY (`movement_id`),
@@ -72,7 +71,7 @@ CREATE TABLE `movements` (
 
 LOCK TABLES `movements` WRITE;
 /*!40000 ALTER TABLE `movements` DISABLE KEYS */;
-INSERT INTO `movements` VALUES (1,_binary '',2000,'2023-10-03 17:46:10.663108',0,'credit',2000,1),(2,_binary '',100,'2023-10-03 17:46:50.320461',0,'credit',100,2),(3,_binary '',0,'2023-10-03 17:47:55.286535',0,'credit',0,3),(4,_binary '',540,'2023-10-03 17:48:26.655542',0,'credit',540,4),(5,_binary '',1000,'2023-10-03 17:49:02.577533',0,'credit',1000,5),(6,_binary '\0',1425,'2023-10-03 18:00:42.591313',2000,'debit',575,1),(7,_binary '\0',700,'2023-10-03 18:01:40.211161',100,'credit',600,2),(8,_binary '\0',150,'2023-10-03 18:11:42.675941',0,'credit',150,3),(9,_binary '\0',0,'2023-10-03 18:12:47.377528',540,'debit',540,4);
+INSERT INTO `movements` VALUES (1,_binary '',2000,'2023-10-03 17:46:10.663108',0,2000,1),(2,_binary '',100,'2023-10-03 17:46:50.320461',0,100,2),(3,_binary '',0,'2023-10-03 17:47:55.286535',0,0,3),(4,_binary '',540,'2023-10-03 17:48:26.655542',0,540,4),(5,_binary '',1000,'2023-10-03 17:49:02.577533',0,1000,5),(6,_binary '\0',1425,'2023-10-03 18:00:42.591313',2000,575,1),(7,_binary '\0',700,'2023-10-03 18:01:40.211161',100,600,2),(8,_binary '\0',150,'2023-10-03 18:11:42.675941',0,150,3),(9,_binary '\0',0,'2023-10-03 18:12:47.377528',540,540,4);
 /*!40000 ALTER TABLE `movements` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -85,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-03 15:20:02
+-- Dump completed on 2023-10-05  2:48:42

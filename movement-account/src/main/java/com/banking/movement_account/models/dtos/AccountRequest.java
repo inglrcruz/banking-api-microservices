@@ -20,4 +20,6 @@ public class AccountRequest {
 
     private Double balance;
 
+    private Boolean status;
+
 }

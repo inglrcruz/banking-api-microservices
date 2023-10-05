@@ -56,19 +56,14 @@ public class AccountService {
      * @param acctReq The request object containing updated account details.
      * @return The updated Account object.
      */
-    public Account update(Long id, AccountRequest acctReq) {
-        Account exisAcct = this.findById(id);
-        if (exisAcct != null) {
-            if (acctReq.getAccount_number() != null && exisAcct.getAccountNumber() != acctReq.getAccount_number())
-                exisAcct.setAccountNumber(acctReq.getAccount_number());
-            if (acctReq.getAccount_type() != null)
-                exisAcct.setAccountType(acctReq.getAccount_type());
-            if (acctReq.getBalance() != null)
-                exisAcct.setBalance(acctReq.getBalance());
-            return acctRepo.save(exisAcct);
-        } else {
-            throw new RuntimeException();
-        }
+    public Account update(Long id, AccountRequest acctReq, Account exisAcct) {
+        if (acctReq.getAccount_number() != null && exisAcct.getAccountNumber() != acctReq.getAccount_number())
+            exisAcct.setAccountNumber(acctReq.getAccount_number());
+        if (acctReq.getAccount_type() != null)
+            exisAcct.setAccountType(acctReq.getAccount_type());
+        if (acctReq.getBalance() != null)
+            exisAcct.setBalance(acctReq.getBalance());
+        return acctRepo.save(exisAcct);
     }
 
     /**
