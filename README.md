@@ -10,7 +10,7 @@ Banking system developed with the following technologies:
 - Eureka
 - MySQL 8
 
-### To run the project on your localhost
+### To run the project on your localhost (Mysql, Zookeeper and kafka)
 
 - Pull up the docker container
 ```sh
