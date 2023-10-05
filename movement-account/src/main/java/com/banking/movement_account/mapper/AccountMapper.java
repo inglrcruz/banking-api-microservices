@@ -19,13 +19,11 @@ public class AccountMapper {
      * @return An AccountResponse object representing the mapped account data.
      */
     public AccountResponse mapToAccountResponse(Account acct) {
-        Format format = new Format();
-        String accType = (acct.getAccountType().equals(AccountType.savings_account)) ? "Savings" : "Current";
-        
+        Format format = new Format();        
         return AccountResponse.builder()
                 .account_id(acct.getAccountId())
                 .account_number(acct.getAccountNumber())
-                .account_type(accType)
+                .account_type(format.accountType(AccountType.savings_account))
                 .balance(format.numberFormat(Double.parseDouble(acct.getBalance().toString())))
                 .customer_id(acct.getCustomerId())
                 .status(acct.getStatus())

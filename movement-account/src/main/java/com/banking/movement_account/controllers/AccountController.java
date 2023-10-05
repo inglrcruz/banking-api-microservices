@@ -106,11 +106,12 @@ public class AccountController {
      *         response.
      */
     @PatchMapping("{id}")
-    public ResponseEntity<Account> update(@PathVariable Long id, @RequestBody AccountRequest acctReq) {
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody AccountRequest acctReq) {
         try {
             Account acct = acctServ.findById(id);
             if (acct != null) {
-                return ResponseEntity.ok(acctServ.update(id, acctReq, acct));
+                acctServ.update(acctReq, acct);
+                return ResponseEntity.ok().build();
             } else {
                 return ResponseEntity.notFound().build();
             }

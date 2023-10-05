@@ -46,6 +46,8 @@ public class MovementService {
         var acct = this.acctServ.findById(movDto.getAccount_id());
         if (acct == null)
             throw new RuntimeException(errorMsg.ACCOUNT_NOT_FOUND);
+        if (acct.getStatus().equals(false))
+            throw new RuntimeException(errorMsg.ACCOUNT_DEACTIVATED);
         Double balance = 0.0;
         if (movDto.getValue() > 0) {
             balance = acct.getBalance() + movDto.getValue();
@@ -64,7 +66,7 @@ public class MovementService {
         // Update balance
         AccountRequest acctReq = new AccountRequest();
         acctReq.setBalance(balance);
-        this.acctServ.update(acct.getAccountId(), acctReq, acct);
+        this.acctServ.update(acctReq, acct);
         // Add movement
         return movRepo.save(mv).getMovementId();
     }
@@ -136,7 +138,7 @@ public class MovementService {
         }
         AccountRequest acctDto = new AccountRequest();
         acctDto.setBalance(balance);
-        this.acctServ.update(acct.getAccountId(), acctDto, acct);
+        this.acctServ.update(acctDto, acct);
         // Delete row
         movRepo.deleteById(id);
     }
